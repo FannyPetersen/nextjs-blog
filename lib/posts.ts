@@ -8,6 +8,7 @@ const postsDirectory = path.join(process.cwd(), 'posts')
 
 export function getSortedPostsData() {
   // Get file names under /posts
+  // ? Question: why do you ever want to do readdir synchronously?
   const fileNames = fs.readdirSync(postsDirectory)
   const allPostsData = fileNames.map(fileName => {
     // Remove ".md" from file name to get id
