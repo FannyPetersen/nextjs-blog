@@ -1,32 +1,21 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
-import Link from 'next/link'
-import Date from '../components/date'
-import { GetStaticProps } from 'next'
+import Head from "next/head";
+import Layout, { siteTitle } from "../components/layout";
+import utilStyles from "../styles/utils.module.css";
+import Link from "next/link";
+import Date from "../components/date";
+import { GetStaticProps } from "next";
 import { fetchEntries } from "../lib/contentfulPosts";
 
-export default function Home({ allPostsData }: 
-  {
-   allPostsData: {
-     date: string
-     title: string
-     id: string
-   }[]
- }
- 
-    /* {
-    posts,
-  }: {
-    posts: {
-      title;
-      date;
-      body;
-    }[]; // HUR SER RESPONSEN UT?
-  } */
-  
-  ) {
+export default function Home({
+  posts,
+}: {
+  posts: {
+    title: string;
+    date: string;
+    body: string;
+    postId: number;
+  }[];
+}) {
   return (
     <Layout home>
       <Head>
@@ -38,45 +27,42 @@ export default function Home({ allPostsData }:
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-              <a>{title}</a>
+          {posts.map(({ postId, date, title }) => (
+            <li className={utilStyles.listItem} key={postId}>
+              <Link href={`/posts/${title.replace(/ /g, '-')}`}>
+                <a>{title}</a>
               </Link>
               <br />
               <small className={utilStyles.lightText}>
-              <Date dateString={date} />
+                <Date dateString={date} />
               </small>
             </li>
           ))}
         </ul>
       </section>
-
-            {/*<div className="posts">
-        {posts.map((p) => {
-          return <p>TITEL {p.title}</p>;
-        })}
-      </div>*/}
-
     </Layout>
-  )
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData()
+  const res = await fetchEntries();
+  const posts = res.map((p) => {
+    return p.fields;
+  });
 
-    // from fetchentries:
-    /* const res = await fetchEntries();
-    const posts = await res.map((p) => {
-      return p.fields;
-    });
-    console.log('POSTS', posts);
-    */ 
+  posts.sort((a, b) => {
+    if (a.date < b.date) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
 
+  console.log("POSTS", posts);
 
   return {
     props: {
-      allPostsData
-    }
-  }
-}
+      posts,
+    },
+  };
+};

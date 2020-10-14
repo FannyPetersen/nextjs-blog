@@ -6,6 +6,7 @@ import html from 'remark-html'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
+/*
 export function getSortedPostsData() {
   // Get file names under /posts
   // ? Question: why do you ever want to do readdir synchronously?
@@ -36,6 +37,7 @@ export function getSortedPostsData() {
     }
   })
 }
+*/
 
 export function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory)
