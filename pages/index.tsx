@@ -5,6 +5,7 @@ import Link from "next/link";
 import Date from "../components/date";
 import { GetStaticProps } from "next";
 import { fetchEntries } from "../lib/contentfulPosts";
+import Footer from '../components/Footer'
 
 export default function Home({
   posts,
@@ -40,6 +41,7 @@ export default function Home({
           ))}
         </ul>
       </section>
+      <Footer />
     </Layout>
   );
 }
