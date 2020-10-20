@@ -5,7 +5,7 @@ import Link from "next/link";
 import Date from "../components/date";
 import { GetStaticProps } from "next";
 import { fetchEntries } from "../lib/contentfulPosts";
-import Footer from '../components/Footer'
+import Footer from "../components/Footer";
 
 export default function Home({
   posts,
@@ -15,6 +15,7 @@ export default function Home({
     date: string;
     body: string;
     postId: number;
+    id: string;
   }[];
 }) {
   return (
@@ -28,9 +29,9 @@ export default function Home({
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {posts.map(({ postId, date, title }) => (
+          {posts.map(({ date, title, postId, id }) => (
             <li className={utilStyles.listItem} key={postId}>
-              <Link href={`/posts/${title.replace(/ /g, '-')}`}>
+              <Link href={`/posts/${id}`}>
                 <a>{title}</a>
               </Link>
               <br />
@@ -49,6 +50,7 @@ export default function Home({
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetchEntries();
   const posts = res.map((p) => {
+    p.fields.id = p.fields.title.replace(/ /g, "-");
     return p.fields;
   });
 

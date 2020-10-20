@@ -14,11 +14,13 @@ export default function Post(
     postData: {
       title: string;
       date: string;
-      contentHtml: string;
+      body: string;
+      id: string;
     };
   },
 
 ) {
+
   return (
     <Layout>
       <Head>
@@ -29,7 +31,7 @@ export default function Post(
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div dangerouslySetInnerHTML={{ __html: postData.body }} />
       </article>
     </Layout>
   );
@@ -43,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => { // kolla hur getstaticprops funkar
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await getPostData(params.id as string);
   return {
     props: {
