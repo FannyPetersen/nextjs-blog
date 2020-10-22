@@ -6,21 +6,17 @@ import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 
-
-export default function Post(
-  {
-    postData,
-  }: {
-    postData: {
-      title: string;
-      date: string;
-      body: string;
-      id: string;
-    };
-  },
-
-) {
-
+export default function Post({
+  postData,
+}: {
+  postData: {
+    title: string;
+    date: string;
+    body: string;
+    id: string;
+    introduction: string;
+  };
+}) {
   return (
     <Layout>
       <Head>
@@ -31,6 +27,11 @@ export default function Post(
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
+        <div
+          className={utilStyles.headingMd}
+          dangerouslySetInnerHTML={{ __html: postData.introduction }}
+        />
+        <br></br>
         <div dangerouslySetInnerHTML={{ __html: postData.body }} />
       </article>
     </Layout>
@@ -49,7 +50,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await getPostData(params.id as string);
   return {
     props: {
-      postData
+      postData,
     },
   };
 };

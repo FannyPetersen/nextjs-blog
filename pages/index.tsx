@@ -14,7 +14,6 @@ export default function Home({
     title: string;
     date: string;
     body: string;
-    postId: number;
     id: string;
   }[];
 }) {
@@ -29,10 +28,10 @@ export default function Home({
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {posts.map(({ date, title, postId, id }) => (
-            <li className={utilStyles.listItem} key={postId}>
+          {posts.map(({ date, title, id }) => (
+            <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
-                <a>{title}</a>
+          <a>{title}</a>
               </Link>
               <br />
               <small className={utilStyles.lightText}>
@@ -61,8 +60,6 @@ export const getStaticProps: GetStaticProps = async () => {
       return -1;
     }
   });
-
-  console.log("POSTS", posts);
 
   return {
     props: {
