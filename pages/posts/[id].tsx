@@ -6,17 +6,23 @@ import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
+
 export default function Post({
   postData,
 }: {
   postData: {
     title: string;
+    image: string;
     date: string;
-    body: string;
+    body: any;
     id: string;
     introduction: string;
   };
 }) {
+  const body = documentToReactComponents(postData.body);
+
   return (
     <Layout>
       <Head>
@@ -32,7 +38,11 @@ export default function Post({
           dangerouslySetInnerHTML={{ __html: postData.introduction }}
         />
         <br></br>
-        <div dangerouslySetInnerHTML={{ __html: postData.body }} />
+        {/*<div dangerouslySetInnerHTML={{ __html: postData.body }} />*/}
+  <div>{body}</div>
+  <div>
+  <img key={postData.image} src={`${postData.image}`} className="img" />
+  </div>
       </article>
     </Layout>
   );
