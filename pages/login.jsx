@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useRouter } from "next/router";
 
-const SignInPage = () => {
+const LogInPage = () => {
   const router = useRouter();
   const emailInput = useRef();
   const passwordInput = useRef();
@@ -12,14 +12,14 @@ const SignInPage = () => {
     const email = emailInput.current.value;
     const password = passwordInput.current.value;
 
-    const response = await fetch("/sessions", {
+    const response = await fetch("./api/sessions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
     });
 
     if (response.ok) {
-      return router.push("/private");
+      return router.push("/home");
     }
   };
 
@@ -42,4 +42,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default LogInPage;

@@ -15,3 +15,7 @@ INFO
 
 .env
 APPLICATION_SECRET - I just generated it randomly
+
+---
+
+https://authorization-server.com/auth?response_type=code&client_id=a633e6da-1e87-4e1b-a1aa-e96508fb8a75&redirect_uri=REDIRECT_URI&scope=photos&state=1234zyx

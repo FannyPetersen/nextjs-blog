@@ -1,7 +1,7 @@
 import { withIronSession } from "next-iron-session";
 
 const VALID_EMAIL = "petersen.fanny@gmail.com" || "jorgedelacruz@gmail.com";
-const VALID_PASSWORD = "opensesamecodenoobs";
+const VALID_PASSWORD = "codenoobs";
 const application_secret = "RexLrd0MVeeieap9EeNl6MxtYu4kViuA"
 
 export default withIronSession(
