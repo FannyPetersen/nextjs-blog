@@ -3,7 +3,7 @@ import { withIronSession } from "next-iron-session";
 import { useRouter } from "next/router";
 import { newPost } from "../lib/addPost";
 
-const PrivatePage = ({ user }) => {
+const BlogHomePage = ({ user }) => {
 
   const router = useRouter();
   const titleInput = useRef();
@@ -87,6 +87,6 @@ export const getServerSideProps = withIronSession(
   }
 );
 
-export default PrivatePage;
+export default BlogHomePage;
 
 

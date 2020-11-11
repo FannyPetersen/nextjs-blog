@@ -23,7 +23,10 @@ export default function Home({
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hi, we are Fanny Petersen and Jorge Casal, two coding noobs explaining JavaScript.</p>
+        <p>
+          Hi, we are Fanny Petersen and Jorge Casal, two coding noobs explaining
+          JavaScript.
+        </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -31,7 +34,7 @@ export default function Home({
           {posts.map(({ date, title, id }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
-          <a>{title}</a>
+                <a>{title}</a>
               </Link>
               <br />
               <small className={utilStyles.lightText}>

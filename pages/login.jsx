@@ -19,7 +19,7 @@ const LogInPage = () => {
     });
 
     if (response.ok) {
-      return router.push("/home");
+      return router.push("/bloghome");
     }
   };
 
