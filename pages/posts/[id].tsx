@@ -22,6 +22,7 @@ export default function Post({
   };
 }) {
   const body = documentToReactComponents(postData.body);
+  console.log('BODY FRONTEND', body);
 
   return (
     <Layout>

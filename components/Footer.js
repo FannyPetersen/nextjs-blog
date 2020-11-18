@@ -4,12 +4,11 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <>
-      <footer>
-      2020 Copyright © The Code Noobs
-      </footer>
-      <Link href={`/login`}>
+      <footer>2020 Copyright © The Code Noobs</footer>
+      {/*<Link href={`/login`}>
       <p className={utilStyles.login}>You one of the codenoobs? <a>{"Login here."}</a></p>
-      </Link>
+  </Link>*/}
+      
       <style jsx>{`
         footer {
           width: 100%;
@@ -26,5 +25,5 @@ export default function Footer() {
         }
       `}</style>
     </>
-  )
+  );
 }

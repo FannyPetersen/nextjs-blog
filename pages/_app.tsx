@@ -12,7 +12,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <Auth0Provider
       domain="dev-8qklvg4u.eu.auth0.com"
       clientId="5zU6P2QSOg3XFmEfuFxyfy1DT7fgOtf2"
-      redirectUri={"localhost:3000/"}
+      // Change this at deployment to real URL
+      redirectUri={"http://localhost:3000/bloghome"}
     >
       <Component {...pageProps} />
     </Auth0Provider>

@@ -1,7 +1,10 @@
 import React, { useRef } from "react";
 import { useRouter } from "next/router";
+import LoginButton from "../components/LoginButton";
+
 
 const LogInPage = () => {
+  /*
   const router = useRouter();
   const emailInput = useRef();
   const passwordInput = useRef();
@@ -40,6 +43,10 @@ const LogInPage = () => {
       </div>
     </form>
   );
+  */
+ return (
+   <LoginButton/>
+ )
 };
 
 export default LogInPage;
