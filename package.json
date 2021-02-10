@@ -11,6 +11,7 @@
     "@auth0/auth0-react": "^1.2.0",
     "@contentful/rich-text-react-renderer": "^14.1.2",
     "contentful": "^7.14.7",
+    "contentful-management": "^7.8.0",
     "date-fns": "^2.16.1",
     "dotenv": "^8.2.0",
     "gray-matter": "^4.0.2",
